@@ -1,0 +1,150 @@
+<html lang="en">
+<head>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+    <title>MySound</title>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #c {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        #overlay {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgb(0, 0, 0);
+        }
+
+        #overlay button {
+            
+            
+            border: 0;
+            color: #ffffff;
+            padding: 16px 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            overflow: hidden;
+         
+        }
+        
+        #overlay button::before {
+        content: '';
+        position: absolute;
+        inset: -15px 70px;
+        background: linear-gradient(315deg, royalblue ,cyan ,lime ,yellow ,red);
+        transition: 0.5s;
+        animation: animate 4s linear infinite;
+        }
+
+        #overlay h2 {
+        position: relative;
+        font-size: 2.5em;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+        letter-spacing:0.05em;
+        justify-content:center;
+        z-index: 1;
+
+     }
+
+
+  
+        #overlay button:hover::before{
+            inset: -20px 0px;
+        }
+        @keyframes animate {
+            0% {
+            transform: rotate(0deg);
+            }
+            100% {
+            transform: rotate(360deg);
+                }
+        }
+
+        #overlay button::after {
+            content: '';
+            position: absolute;
+            inset: 6px;
+            background: rgb(0, 0, 0);
+            border-radius: 50%;
+            z-index: 1;
+
+        }
+
+        #info {
+            position: absolute;
+            top: 0px;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            text-align: center;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            pointer-events: none;
+            z-index: 1; /* TODO Solve this in HTML */
+            color: #c9c9c9;
+        }
+    </style>
+</head>
+<body>
+<canvas id="c"></canvas>
+
+<div id="overlay">
+    <button id="startButton"></button>
+    <div>
+        <h2>Play</h2>
+    </div>
+</div>
+<div id="info">
+    navigate with WASD / arrows / mouse
+</div>
+<script src = './MySound.js' type = "module"></script>
+<script>
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+    apiKey: "AIzaSyBvuDxA3SindvljAKuTbl8XqqKAuzo5-Oo",
+    authDomain: "sound-cf85d.firebaseapp.com",
+    projectId: "sound-cf85d",
+    storageBucket: "sound-cf85d.appspot.com",
+    messagingSenderId: "645910845560",
+    appId: "1:645910845560:web:7e3f502778f4092935f58d",
+    measurementId: "G-TK5YTR5M93"
+    };
+
+   
+// Initialize Firebase
+ // Initialize Firebase
+ firebase.initializeApp(firebaseConfig);
+        
+        const db = firebase.firestore();
+        
+    
+</script>
+</body>
+</html>

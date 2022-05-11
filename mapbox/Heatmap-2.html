@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>heat-2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.js"></script>
+<link
+href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.6.1/mapbox-gl.css"
+rel="stylesheet"
+/>
+<script src="https://api.mapbox.com/mapbox.js/plugins/turf/v3.0.11/turf.min.js"></script>
+<script src="./data.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: HelveticaNeue-light;
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 30px;
+}
+
+h2 {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: #2dc4b2;
+}
+
+#console {
+  position: absolute;
+  width: 240px;
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #fff;
+}
+
+.session {
+  margin-bottom: 20px;
+}
+
+.row {
+  height: 12px;
+  width: 100%;
+}
+
+.colors {
+  background: linear-gradient(to right, royalblue ,cyan ,lime ,yellow ,red);
+  margin-bottom: 5px;
+}
+
+.label {
+  width: 18.5%;
+  display: inline-block;
+  text-align: center;
+}
+
+.mapboxgl-popup-content {
+  background-color: red;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  padding: 0;
+
+}
+
+
+
+</style>
+</head>
+<body>
+    
+
+<div id='map'></div>
+
+    <div id='console'>
+      <h1>City Sound Levels</h1>
+      <p>Data: Sound Levels in Dubai</a> on 6/3/2022 </p>
+      <div class='session'>
+        <h2>Sound in Decibels (dB)</h2>
+        <div class='row colors'>
+        </div>
+
+        <div class='row labels'>
+          <div class='label'>0</div>
+          <div class='label'>40</div>
+          <div class='label'>50</div>
+          <div class='label'>60</div>
+          <div class='label'>70+</div>
+        </div>
+        
+      </div>
+
+      <div class='session' id='sliderbar'>
+        <h2>Hour: 
+          <label id='active-hour'>Move Slider</label>
+        </h2>
+        <input id="slider" class="row" type="range" min="0" max="20" step="1" value="12" />
+      </div>
+      
+    </div>
+
+    <script src="map.js"></script>
+    <script>
+// Add geolocate control to the map.
+map.addControl(
+new mapboxgl.GeolocateControl({
+positionOptions: {
+enableHighAccuracy: true
+},
+// When active the map will receive updates to the device's location as it changes.
+trackUserLocation: true,
+// Draw an arrow next to the location dot to indicate which direction the device is heading.
+showUserHeading: true
+})
+);
+
+
+// Add zoom and rotation controls to the map.
+map.addControl(new mapboxgl.NavigationControl());
+
+    </script>
+     <script>
+
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+      apiKey: "AIzaSyBvuDxA3SindvljAKuTbl8XqqKAuzo5-Oo",
+      authDomain: "sound-cf85d.firebaseapp.com",
+      projectId: "sound-cf85d",
+      storageBucket: "sound-cf85d.appspot.com",
+      messagingSenderId: "645910845560",
+      appId: "1:645910845560:web:7e3f502778f4092935f58d",
+      measurementId: "G-TK5YTR5M93"
+      };
+
+     
+  // Initialize Firebase
+   // Initialize Firebase
+   firebase.initializeApp(firebaseConfig);
+          
+          const db = firebase.firestore();
+          
+      
+  </script>
+</body>
+</html>

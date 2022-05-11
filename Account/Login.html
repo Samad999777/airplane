@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Login</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+</head>
+<body>
+    <div id="login_div" class = "main-div">
+        <h3>MySound Login</h3>
+        <input type = "email" placeholder = "Email" id="email_field" />
+        <input type = "password" placeholder = "Password" id="password_field"/>
+
+        <button onclick="login()">Login</button>
+        <button class="signin google" id = >Login with Google+</button>
+
+    </div>
+
+    <div id="user_div" class ="loggedin-div">
+        <h3>
+            Welcome to MySound Space!
+        </h3>
+        <p id = "user_para">An archive of your sounds.</p>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <script>
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+        apiKey: "AIzaSyBvuDxA3SindvljAKuTbl8XqqKAuzo5-Oo",
+        authDomain: "sound-cf85d.firebaseapp.com",
+        projectId: "sound-cf85d",
+        storageBucket: "sound-cf85d.appspot.com",
+        messagingSenderId: "645910845560",
+        appId: "1:645910845560:web:7e3f502778f4092935f58d",
+        measurementId: "G-TK5YTR5M93"
+        };
+  
+       
+    // Initialize Firebase
+     // Initialize Firebase
+     firebase.initializeApp(firebaseConfig);
+            
+            const db = firebase.firestore();
+            
+        
+    </script>
+    <script src="./login.js"></script>
+</body>
+</html>
